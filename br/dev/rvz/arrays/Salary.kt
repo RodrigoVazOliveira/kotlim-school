@@ -9,4 +9,10 @@ fun main() {
     }
 
     println(salaries.contentToString())
+
+    salaries.forEachIndexed { index, salary ->
+        salaries[index] = salary * increase
+    }
+
+    println(salaries.contentToString())
 }
