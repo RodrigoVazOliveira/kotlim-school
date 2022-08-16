@@ -26,7 +26,11 @@ fun main() {
         .takeLast(3).toTypedArray()
         .avarage()
 
-    println("A media dos 3 ultimos amiores salarios $avarageToThreelastSalaries")
+    val avarageToThreeMinorsSalaries = salariesWithMost.sorted()
+        .take(3).toTypedArray()
+        .avarage()
+
+    println("A media dos 3 ultimos amiores salarios $avarageToThreelastSalaries e a medias dos primeiros salarios e $avarageToThreeMinorsSalaries")
 
 }
 
