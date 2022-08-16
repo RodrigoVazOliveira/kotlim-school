@@ -8,7 +8,7 @@ fun main() {
 
     println()
     val numberPairs = 0..100 step 2
-    numberPairs.forEach({number -> print("$number ")})
+    numberPairs.forEach { number -> print("$number ") }
 
     println()
     val numberPairsReverses = 100 downTo 0 step 2
@@ -24,4 +24,9 @@ fun main() {
     } else {
         println(" nao esta no intervalo")
     }
+
+    val alphatbet = 'A'..'z'
+    val character  = 'A'
+
+    println(character in alphatbet)
 }
