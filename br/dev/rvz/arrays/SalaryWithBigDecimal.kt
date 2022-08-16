@@ -21,6 +21,13 @@ fun main() {
     }
 
     println("total de gastos em 6 meses $totalInSixMonth")
+
+    val avarageToThreelastSalaries = salariesWithMost.sorted()
+        .takeLast(3).toTypedArray()
+        .avarage()
+
+    println("A media dos 3 ultimos amiores salarios $avarageToThreelastSalaries")
+
 }
 
 private fun calculateMostRelative(
@@ -33,14 +40,4 @@ private fun calculateMostRelative(
     } else {
         (salary * mostSalary).setScale(2, RoundingMode.UP)
     }
-}
-
-fun bigDecimalArrayOf(vararg values: String): Array<BigDecimal> {
-    val size = values.size
-
-    return Array(size) { index -> BigDecimal(values[index]) }
-}
-
-fun Array<BigDecimal>.sum(): BigDecimal {
-    return this.reduce { acumulator, value -> acumulator.plus(value) }
 }
