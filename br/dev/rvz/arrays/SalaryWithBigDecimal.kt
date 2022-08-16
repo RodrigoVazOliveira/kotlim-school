@@ -14,6 +14,13 @@ fun main() {
     println("Salarios com aumento: ${salariesWithMost.contentToString()}")
     val sumSalaries = salariesWithMost.sum()
     println("A soma do salario com aumento e de $sumSalaries")
+
+    val months = BigDecimal("6")
+    val totalInSixMonth = salariesWithMost.fold(sumSalaries) { accumulator, salary ->
+        accumulator.plus(salary * months).setScale(2, RoundingMode.UP)
+    }
+
+    println("total de gastos em 6 meses $totalInSixMonth")
 }
 
 private fun calculateMostRelative(
