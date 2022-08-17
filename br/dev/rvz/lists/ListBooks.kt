@@ -44,9 +44,11 @@ fun main() {
 }
 
 fun List<Book?>.printWithMarker() {
-    val joinToString = this.joinToString(separator = "\n") {
-        "- ${it?.title} de ${it?.author}"
-    }
+    val joinToString = this
+        .filterNotNull()
+        .joinToString(separator = "\n") {
+            "- ${it?.title} de ${it?.author}"
+        }
     println("\n##### LISTA DE LIVROS #######\n")
     println(joinToString)
 }
