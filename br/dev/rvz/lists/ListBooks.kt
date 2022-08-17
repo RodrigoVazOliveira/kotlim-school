@@ -32,12 +32,18 @@ fun main() {
 
     println(books)
     books.printWithMarker()
+    val bookSortedYearPublish = books.sorted()
+
+    bookSortedYearPublish.printWithMarker()
+
+    val booksSortedByTitle = books.sortedBy { it.title }
+    booksSortedByTitle.printWithMarker()
 }
 
-fun MutableList<Book>.printWithMarker() {
+fun List<Book>.printWithMarker() {
     val joinToString = this.joinToString(separator = "\n") {
         "- ${it.title} de ${it.author}"
     }
-    println(" ##### LISTA DE LIVROS #######\n")
+    println("\n##### LISTA DE LIVROS #######\n")
     println(joinToString)
 }
