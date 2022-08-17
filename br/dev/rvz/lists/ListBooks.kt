@@ -39,9 +39,10 @@ fun main() {
     val booksSortedByTitle = books.sortedBy { it.title }
     booksSortedByTitle.printWithMarker()
 
-    books.filter { it.author.startsWith("Joao") }
+    val titlesBooks: List<String> = books.filter { it.author.startsWith("Joao") }
         .sorted()
-        .printWithMarker()
+        .map { it.title }
+    println(titlesBooks)
 }
 
 fun List<Book>.printWithMarker() {
