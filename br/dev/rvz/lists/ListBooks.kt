@@ -39,9 +39,7 @@ fun main() {
     val booksSortedByTitle = books.sortedBy { it.title }
     booksSortedByTitle.printWithMarker()
 
-    val titlesBooks: List<String> = books.filter { it.author.startsWith("Joao") }
-        .sorted()
-        .map { it.title }
+    val titlesBooks: List<String> = books.titleByYearPublishingToAuthor("Joao")
     println(titlesBooks)
 }
 
@@ -51,4 +49,10 @@ fun List<Book>.printWithMarker() {
     }
     println("\n##### LISTA DE LIVROS #######\n")
     println(joinToString)
+}
+
+fun MutableList<Book>.titleByYearPublishingToAuthor(prefixAuthor: String): List<String> {
+    return this.filter { it.author.startsWith(prefixAuthor) }
+        .sorted()
+        .map { it.title }
 }
