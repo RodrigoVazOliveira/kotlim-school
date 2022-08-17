@@ -38,6 +38,10 @@ fun main() {
 
     val booksSortedByTitle = books.sortedBy { it.title }
     booksSortedByTitle.printWithMarker()
+
+    books.filter { it.author.startsWith("Joao") }
+        .sorted()
+        .printWithMarker()
 }
 
 fun List<Book>.printWithMarker() {
