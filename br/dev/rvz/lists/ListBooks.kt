@@ -1,6 +1,25 @@
 package br.dev.rvz.lists
 
 fun main() {
+    val books = createListBook()
+    books.add(
+        Book(title = "Sagarana", author = "Joao Guimaraes Rosa", yearPublish = 1946)
+    )
+
+    println(books)
+    books.printWithMarker()
+    val bookSortedYearPublish = books.sorted()
+
+    bookSortedYearPublish.printWithMarker()
+
+    val booksSortedByTitle = books.sortedBy { it.title }
+    booksSortedByTitle.printWithMarker()
+
+    val titlesBooks: List<String> = books.titleByYearPublishingToAuthor("Joao")
+    println(titlesBooks)
+}
+
+fun createListBook() : MutableList<Book> {
     val bookOne = Book(
         title = "Grande Sertao: Veradas",
         author = "Joao Guimaraes Rosa",
@@ -25,22 +44,7 @@ fun main() {
             publishingCompany = "Editora B"
         )
 
-    val books: MutableList<Book> = mutableListOf(bookOne, bookTwo, bookThree, bookFour)
-    books.add(
-        Book(title = "Sagarana", author = "Joao Guimaraes Rosa", yearPublish = 1946)
-    )
-
-    println(books)
-    books.printWithMarker()
-    val bookSortedYearPublish = books.sorted()
-
-    bookSortedYearPublish.printWithMarker()
-
-    val booksSortedByTitle = books.sortedBy { it.title }
-    booksSortedByTitle.printWithMarker()
-
-    val titlesBooks: List<String> = books.titleByYearPublishingToAuthor("Joao")
-    println(titlesBooks)
+    return mutableListOf(bookOne, bookTwo, bookThree, bookFour)
 }
 
 fun List<Book?>.printWithMarker() {
@@ -84,6 +88,5 @@ fun listaNula(): MutableList<Book?> {
             publishingCompany = "Editora B"
         )
 
-    val books: MutableList<Book?> = mutableListOf(bookOne, null, bookTwo, null, bookThree, bookFour)
-    return books
+    return mutableListOf(bookOne, null, bookTwo, null, bookThree, bookFour)
 }
