@@ -2,13 +2,15 @@ package br.dev.rvz.collections
 
 fun main() {
     val bank = BankName()
+    val books : Collection<String> = bank.names
+
     bank.save("Rodrigo")
-    println(bank.names)
+    println(books)
     println(BankName().names)
 }
 
 class BankName {
-    val names: Collection<String> get() = datas
+    val names: Collection<String> get() = datas.toList()
 
     fun save(name: String) {
         datas.add(name)
