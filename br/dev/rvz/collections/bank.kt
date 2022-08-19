@@ -1,38 +1,29 @@
 package br.dev.rvz.collections
 
 fun main() {
-    val bank = BankName()
-    val books : Collection<String> = bank.names
+    val watchingCourseAndroid: Set<String> = setOf("Alex", "Fran", "Gui", "Maria")
+    val watchingCourseKotlin: Set<String> = setOf("Alex", "Paulo", "Maria")
+    //val watchingBoth: Set<String> = watchingCourseAndroid + watchingCourseKotlin
+    val watchingAll = mutableSetOf<String>()
+    watchingAll.addAll(watchingCourseAndroid)
+    watchingAll.addAll(watchingCourseKotlin)
+    println(watchingAll)
 
-    bank.save("Rodrigo")
-    println(books)
-    println(BankName().names)
-}
 
-class BankName {
-    val names: Collection<String> get() = datas.toList()
+    // teste union
+    val unionWatchingCourses = mutableSetOf<String>()
+    val union = unionWatchingCourses.union(watchingCourseAndroid)
+    val intersection = union.intersect(watchingCourseKotlin)
+    val subtract = union.subtract(watchingCourseKotlin)
 
-    fun save(name: String) {
-        datas.add(name)
-    }
+    println("Usando uniao $union")
+    println("Intersecao da uniao $intersection")
+    println("subtracao $subtract")
 
-    companion object {
-        private val datas = mutableListOf<String>()
-    }
-}
+    // transformar em lista
 
-fun testBankNames() {
-    val names: Collection<String> = mutableListOf(
-        "Alex",
-        "Fran",
-        "Gui",
-        "Maria",
-        "Ana"
-    )
-
-    for (name in names) {
-        println(name)
-    }
-
-    println(names)
+    val watchingList = watchingAll.toMutableList()
+    watchingList.add("Valmir")
+    println(watchingList)
+    println(watchingList.toSet())
 }
