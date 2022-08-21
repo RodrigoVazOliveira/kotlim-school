@@ -48,6 +48,7 @@ fun main() {
 
     val notebook: Map<Char, List<String>> = names.groupBy { name -> name.first() }
     println(notebook)
+    println(notebook['A'])
 }
 
 fun testeWithFunctionsOfMap(orders: MutableMap<Int, Double>) {
