@@ -6,6 +6,36 @@ fun main() {
         Pair(2, 34.0),
         3 to 59.0
     )
+
+    println("order one: ${orders[4]}")
+
+    // se nao encontrar o map
+    println(orders.getOrElse(0) {
+        0.0
+    })
+
+    println(orders.getOrDefault(21, 1.1))
+
+    // access all keys e values
+    println("todos os keys ${orders.keys} e todos os valores ${orders.values}")
+
+    orders.values.forEach { value -> println(value) }
+
+
+    // fazendo filters
+
+    val ordersMinor = orders.filter {(number, value) ->
+        number % 2 == 0 && value > 20.00
+    }
+
+    println("pedidos maior que cinguenta $ordersMinor")
+
+    val ordersPairs = orders.filterKeys { key -> key % 2 == 0 }
+
+    println("apenas pedidos pares: $ordersPairs")
+}
+
+fun manipularMap(orders: MutableMap<Int, Double>) {
     println(orders)
     val orderTwo = orders[1]
     orderTwo?.let { println("Pedido $it") }
@@ -37,5 +67,4 @@ fun main() {
 
     // nao deve ser removido pelo fato do valor nao ser igual
     println(orders)
-
 }
