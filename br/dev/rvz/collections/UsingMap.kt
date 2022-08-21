@@ -1,11 +1,56 @@
 package br.dev.rvz.collections
 
 fun main() {
-    val orders: MutableMap<Int, Double> = mutableMapOf(
-        Pair(1, 20.1),
-        Pair(2, 34.0),
-        3 to 59.0
+//    val orders: MutableMap<Int, Double> = mutableMapOf(
+//        Pair(1, 20.1),
+//        Pair(2, 34.0),
+//        3 to 59.0
+//    )
+//
+//
+    val orders = listOf<Order>(
+        Order(1, 20.0),
+        Order(2, 60.0),
+        Order(3, 30.0),
+        Order(4, 70.0)
     )
+
+    println(orders)
+
+    val orderMap: Map<Int, Order> = orders.associateBy { order -> order.number }
+
+    println(orderMap)
+
+    val ordersFree = orders.associateWith { order -> order.value > 50.0 }
+
+//    val orderValueGreatFifty: Map<Boolean, Order> = orders.associateBy { order -> order.value > 50.0 }
+
+    println(ordersFree)
+
+    val orderShippingFree: Map<Boolean, List<Order>> = orders.groupBy { order: Order ->
+        order.value > 50.0
+    }
+
+    println(orderShippingFree)
+    println(orderShippingFree[true])
+
+
+    val names = listOf<String>(
+        "Alex",
+        "Fran",
+        "Gui",
+        "Ana",
+        "Paulo",
+        "Maria",
+        "Mario",
+        "Gisele"
+    )
+
+    val notebook: Map<Char, List<String>> = names.groupBy { name -> name.first() }
+    println(notebook)
+}
+
+fun testeWithFunctionsOfMap(orders: MutableMap<Int, Double>) {
 
     println("order one: ${orders[4]}")
 
