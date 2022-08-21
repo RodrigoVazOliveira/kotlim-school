@@ -33,6 +33,24 @@ fun main() {
     val ordersPairs = orders.filterKeys { key -> key % 2 == 0 }
 
     println("apenas pedidos pares: $ordersPairs")
+
+    // using maps with plus end minus
+    println(orders + Pair(7, 12312.3))
+    println(orders + mapOf(8 to 3131.1))
+
+    println(orders - Pair(7, 12312.3))
+
+    orders.putAll(setOf<Pair<Int, Double>>(1 to 3412312.1, 9 to 32343.4, 10 to 123123.1, 12  to 123123.1))
+
+
+    orders.remove(1)
+    orders.values.remove(123123.1)
+
+    println(orders)
+
+    orders.keys.remove(12)
+
+    println(orders)
 }
 
 fun manipularMap(orders: MutableMap<Int, Double>) {
