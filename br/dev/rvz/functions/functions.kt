@@ -20,6 +20,27 @@ fun main() {
     }
 
     println("O 9 menos 3 e igual a ${functionAnonymousWithParameters(9,3)}")
+
+    val calcBonus : (salary: Double) -> Double = lambda@{ salary ->
+            if (salary > 1000.00) {
+                return@lambda salary.plus(50.00)
+            }
+
+            return@lambda salary.plus(100.0)
+    }
+
+    println("Adicionar bonus ao salario de 200 reais, ${calcBonus(200.00)}")
+    println("Salario maior que mil, ${calcBonus(1001.00)}")
+
+    val calcBonusAnonymous: (salary: Double) -> Double = fun(salary: Double) : Double {
+        if (salary > 1000.00) {
+            return salary.plus(50.00)
+        }
+
+        return salary.plus(100.0)
+    }
+
+    println("Calcula salario com funcao anonimas ${calcBonusAnonymous(508.00)}")
 }
 
 fun testeFunctionsWithParametersAndAnonymous() {
