@@ -12,6 +12,16 @@ fun main() {
     }
 
     println(myFunctionAnonymous())
+
+    val sumTwoValues: (Int, Int) -> Int = ::sum
+    println("A soma de 2 + 1 e igual a ${sumTwoValues(2, 1)}")
+
+    val sumWithClass: (Int, Int) -> Int = SumByClass()
+    println("Soma de 4 mais 4 e igual ${sumWithClass(4, 4)}")
+}
+
+fun sum(valueOne: Int, valueTwo: Int) : Int {
+    return valueOne + valueTwo;
 }
 
 fun testeFunctions() {
@@ -39,3 +49,7 @@ class Teste : () -> Unit {
     }
 }
 
+class SumByClass: (Int, Int) -> Int {
+    override fun invoke(valueOne: Int, valueTwo: Int): Int = valueOne + valueTwo
+
+}
