@@ -1,6 +1,11 @@
 package br.dev.rvz.functions
 
 fun main() {
+
+
+}
+
+private fun functionsAndLambdasWithParameters() {
     val functionLambdaWithParameters: (Int, Int) -> Int = { valueOne, valueTwo ->
         valueOne * valueTwo
     }
@@ -15,24 +20,23 @@ fun main() {
 
     println("dois vezes 3 e igual a ${functionLambdaWithParameters(2, 3)}")
 
-    val functionAnonymousWithParameters: (Int, Int) -> Int = fun(valueOne, valueTwo) : Int {
+    val functionAnonymousWithParameters: (Int, Int) -> Int = fun(valueOne, valueTwo): Int {
         return valueOne - valueTwo
     }
+    println("O 9 menos 3 e igual a ${functionAnonymousWithParameters(9, 3)}")
 
-    println("O 9 menos 3 e igual a ${functionAnonymousWithParameters(9,3)}")
+    val calcBonus: (salary: Double) -> Double = lambda@{ salary ->
+        if (salary > 1000.00) {
+            return@lambda salary.plus(50.00)
+        }
 
-    val calcBonus : (salary: Double) -> Double = lambda@{ salary ->
-            if (salary > 1000.00) {
-                return@lambda salary.plus(50.00)
-            }
-
-            return@lambda salary.plus(100.0)
+        return@lambda salary.plus(100.0)
     }
 
     println("Adicionar bonus ao salario de 200 reais, ${calcBonus(200.00)}")
     println("Salario maior que mil, ${calcBonus(1001.00)}")
 
-    val calcBonusAnonymous: (salary: Double) -> Double = fun(salary: Double) : Double {
+    val calcBonusAnonymous: (salary: Double) -> Double = fun(salary: Double): Double {
         if (salary > 1000.00) {
             return salary.plus(50.00)
         }
