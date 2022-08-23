@@ -1,6 +1,28 @@
 package br.dev.rvz.functions
 
 fun main() {
+    val functionLambdaWithParameters: (Int, Int) -> Int = { valueOne, valueTwo ->
+        valueOne * valueTwo
+    }
+
+//    val functionLambdaWithParameters = { valueOne: Int, valueTwo: Int ->
+//        valueOne * valueTwo
+//    }
+
+//    val functionLambdaWithParameters: (Int, Int) -> Int = { _, valueTwo ->
+//        2 * valueTwo
+//    }
+
+    println("dois vezes 3 e igual a ${functionLambdaWithParameters(2, 3)}")
+
+    val functionAnonymousWithParameters: (Int, Int) -> Int = fun(valueOne, valueTwo) : Int {
+        return valueOne - valueTwo
+    }
+
+    println("O 9 menos 3 e igual a ${functionAnonymousWithParameters(9,3)}")
+}
+
+fun testeFunctionsWithParametersAndAnonymous() {
     val myFunctionLambda: () -> Unit = {
         println("Executa funcao lambda")
     }
