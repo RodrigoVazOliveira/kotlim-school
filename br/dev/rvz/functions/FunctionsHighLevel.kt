@@ -27,6 +27,14 @@ fun main() {
     }
 
     authenticator("123", "123", authentica = ::println)
+
+
+    // teste de scope funciton with this
+
+    "Ola mundo".run { println("o tamanho da palavra e $length") }
+
+    Address(road = "Rua Mercurio").apply { "rua $road".uppercase() }.let(::println)
+
 }
 
 
