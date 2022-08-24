@@ -33,7 +33,7 @@ fun main() {
 
     "Ola mundo".run { println("o tamanho da palavra e $length") }
 
-    Address(road = "Rua Mercurio").apply { "rua $road".uppercase() }.let(::println)
+    Address(road = "Rua Mercurio").run { "rua $road".uppercase() }.let(::println)
 
 }
 
