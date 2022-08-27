@@ -1,8 +1,10 @@
 package br.dev.rvz.functions
 
-import java.math.BigInteger
-
 fun main() {
+
+}
+
+fun testeDEScopeFunctions() {
 
 //    Address(road = "bu").let { it }
 //    "".let { it }
@@ -11,16 +13,20 @@ fun main() {
 //    val address = Address(road = "Plutao")
 //    val addressUpperCase = "${address.road.uppercase()}"
 
-    Address(road = "Plutao")
+    Address(road = "Plutao", city = "Uberlandia")
         .let { address -> "${address.road.uppercase()}" }
         .let(::println)
 
 
-    listOf<Address>(Address(road = "Plutao"), Address(road = ""), Address("Zenity"))
+    listOf<Address>(
+        Address(road = "Plutao", city = "Uberlandia"),
+        Address(road = "", city = ""),
+        Address("Zenity", city = "Monte Carmelo")
+    )
         .filter { address -> address.road.isNotEmpty() }
         .let(::println)
 
-    println(testHigherFunction({12 * 2}, 20))
+    println(testHigherFunction({ 12 * 2 }, 20))
 
     sumCustom(1, 2) {
         println(it)
@@ -33,22 +39,43 @@ fun main() {
 
     "Ola mundo".run { println("o tamanho da palavra e $length") }
 
-    Address(road = "Rua Mercurio").run { "rua $road".uppercase() }
+    Address(road = "Rua Mercurio", city = "Patos de minas").run { "rua $road".uppercase() }
         .let { addressUpperCase: String -> println(addressUpperCase) }
+
+
+    run {
+        println("execucao do run")
+    }
+
+    val addressThree = Address(road = "Global", city = "Sao Paulo").also { println("criando um objeto") }
+
+    with(addressThree) {
+        "a rua desse endereco e $road".uppercase()
+    }.let { addressUpperCase: String ->
+        println(addressUpperCase)
+    }
+
+    listOf(
+        Address(road = "casa", city = "Belo Horizonte"),
+        Address(road = "", city = ""),
+        Address(road = "apartamento", city = "Araguari")
+    )
+        .filter(predicate = { endereco -> endereco.road.isNotEmpty() })
+        .let(block = (::println))
+
 
 }
 
-
-fun testHigherFunction(valueOne: () -> Int, valueTwo: Int) : Int {
+fun testHigherFunction(valueOne: () -> Int, valueTwo: Int): Int {
     return valueTwo.plus(valueOne())
 }
 
 
-fun sumCustom(valueOne: Int, valueTwo: Int, result: (Int) -> Unit)  {
+fun sumCustom(valueOne: Int, valueTwo: Int, result: (Int) -> Unit) {
     result(valueOne + valueTwo)
 }
 
-fun authenticator(password: String, passwordActual: String, authentica: (String) -> Unit)  {
+fun authenticator(password: String, passwordActual: String, authentica: (String) -> Unit) {
     if (password == passwordActual) {
         authentica(password)
     }
